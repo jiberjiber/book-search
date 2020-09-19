@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(routes);
 
 // DB Connect (Mongo)
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/booksearch');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/booksearch', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Start the Server
 app.listen(PORT, () => {
