@@ -1,0 +1,25 @@
+{
+  "name": "book-search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose-cli": "^1.0.5",
+    "mongoose": "^5.10.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiberjiber/book-search.git"
+  },
+  "author": "Evan Boswood",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/jiberjiber/book-search/issues"
+  },
+  "homepage": "https://github.com/jiberjiber/book-search#readme"
+}
