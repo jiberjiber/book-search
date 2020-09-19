@@ -1,18 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import routes from './routes';
+import Nav from "./pages/Nav";
+import Saved from "./pages/Saved";
+import Search from "./pages/Search";
+import NoResult from "./pages/NoResult";
 
 function App() {
   return (
-    <div className="App">
       <Router>
-        <Switch>
-          {routes.map((route) => (
-            <Route {...route} key={route.path} />
-          ))}
-        </Switch>
+        <div>
+			<Nav />
+			<Switch>
+				<Route exact path={["/", "/search"]} component={Search} />
+				<Route exact path="/saved" component={Saved} />
+				<Route exact path="/*" component={NoResult} />
+			</Switch>
+		</div>
       </Router>
-    </div>
   );
 }
 
