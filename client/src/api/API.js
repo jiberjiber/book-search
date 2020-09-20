@@ -2,15 +2,15 @@ import axios from 'axios';
 
 export default {
 	searchTitle: (query) => {
-		return axios.get(`localhost:3001/api/search/${query}`);
+		return axios.get(`/api/search/${query}`);
 	},
 	loadSaved: (query) => {
-		return axios.get('localhost:3001/api');
+		return axios.get('/api');
 	},
 	deleteSaved: (query) => {
-		return axios.delete(`localhost:3001/api/${query}`);
+		return axios.delete(`/api/${query}`);
 	},
 	saveBook: (query) => {
-		return axios.post('localhost:3001/api', query);
+		return axios.post('/api', query);
 	}
 }
