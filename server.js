@@ -2,11 +2,23 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const cors = require('cors');
 require('dotenv').config();
 
 // Express Setup
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
+
+// CORS Setup
+app.use(cors());
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -16,7 +28,9 @@ app.use(express.json());
 app.use(routes);
 
 // DB Connect (Mongo)
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/booksearch', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/booksearch', { useNewUrlParser: true, useUnifiedTopology: true }).then(()=> {
+	console.log('Mongoose connected!');
+});
 
 // Start the Server
 app.listen(PORT, () => {
