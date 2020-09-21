@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import API from "../api/API";
-import { Container, Button, Nav, Navbar } from "react-bootstrap";
+import { Container, Button, Nav, Navbar, Card, CardGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function Saved() {
@@ -18,6 +18,7 @@ function Saved() {
 	}, [saved]);
 
 	function deleteItem(id) {
+		console.log(id);
 		API.deleteSaved(id)
 			.then((res) => {
 				console.log(res);
@@ -39,21 +40,19 @@ function Saved() {
 				<br />
 				<div className="text-center">
 					{saved.length ? (
-						<ul>
+						<CardGroup>
 							{saved.map((item) => (
-								<li key={item.id}>
-									<img
-										src={item.volumeInfo.imageLinks.smallThumbnail}
-										alt={item.volumeInfo.title}
-									/>
-									<Link to={`/books/${item.id}`} />
-									<h2>{item.volumeInfo.title}</h2>
-									<h3>By: {item.volumeInfo.authors[0]}</h3>
-									<p>{item.volumeInfo.description}</p>
-									<Button onClick={() => deleteItem(item.id)}>Remove</Button>
-								</li>
+									<Card style={{ width: '10%' }} key={item._id}>
+										<Card.Img src={item.image} alt={item.title} style={{ height: '18rem' }}/>
+										<Button onClick={() => deleteItem(item._id)}>Remove</Button>
+										<Card.Title>{item.title}</Card.Title>
+										<Card.Subtitle>{item.author}</Card.Subtitle>
+										<Card.Text>{item.description}</Card.Text>
+										<Link to={`/books/${item.id}`} />
+										
+									</Card>
 							))}
-						</ul>
+						</CardGroup>
 					) : (
 						<div>
 							<h1>No Saved Books!</h1>
