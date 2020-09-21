@@ -34,7 +34,7 @@ module.exports = {
 
 		let queryURI = {
 			method: "GET",
-			url: `https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyCAknu-YiOa6OcYDUB-Oy0AbQg1X3IIuZg`,
+			url: `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${process.env.API_KEY}`,
 			headers: {}
 		};
 
