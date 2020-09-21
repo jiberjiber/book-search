@@ -30,7 +30,6 @@ module.exports = {
 			.catch((err) => res.status(400).json(err));
 	},
 	search: (req, res) => {
-		console.log(req.params);
 		const query = req.params.title;
 
 		let queryURI = {
